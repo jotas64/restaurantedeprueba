@@ -5,13 +5,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Restaurante La Buena Mesa</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #fff8f0; color: #333; }
-    header { text-align: center; padding: 20px; background: #d2691e; color: white; }
-    h1 { margin: 0; }
-    nav a { margin: 0 15px; color: white; text-decoration: none; font-weight: bold; }
-    section { margin-top: 20px; }
-    .menu-item { margin-bottom: 15px; }
-    footer { text-align: center; margin-top: 30px; font-size: 0.9em; color: #666; }
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #faf8f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #8B4513;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #d2b48c;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    h2 {
+      border-bottom: 3px solid #8B4513;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      font-size: 2rem;
+      color: #6B3E00;
+    }
+
+    /* Menú */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .menu-item {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .menu-item-content {
+      padding: 15px 20px;
+    }
+
+    .menu-item-content h3 {
+      margin-bottom: 10px;
+      color: #8B4513;
+      font-size: 1.4rem;
+    }
+
+    .menu-item-content p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .menu-item-content span {
+      font-weight: 700;
+      color: #A0522D;
+      font-size: 1.1rem;
+    }
+
+    /* Galería */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 280px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    /* Contacto */
+    .contact-info p {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .contact-info a {
+      color: #8B4513;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background-color: #f1ede7;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .gallery img, .menu-item img {
+        width: 100%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -19,31 +184,74 @@
     <h1>Restaurante La Buena Mesa</h1>
     <nav>
       <a href="#menu">Menú</a>
+      <a href="#galeria">Galería</a>
       <a href="#ubicacion">Ubicación</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <section id="menu">
-    <h2>Menú</h2>
-    <div class="menu-item">
-      <strong>Paella Valenciana</strong> - Arroz con mariscos y verduras - 12€
-    </div>
-    <div class="menu-item">
-      <strong>Tortilla Española</strong> - Clásica tortilla de patata y cebolla - 8€
-    </div>
-  </section>
+  <main>
+    <section id="menu">
+      <h2>Menú Destacado</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Paella Valenciana" />
+          <div class="menu-item-content">
+            <h3>Paella Valenciana</h3>
+            <p>Arroz con mariscos frescos, pollo y verduras tradicionales.</p>
+            <span>12€</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb23?auto=format&fit=crop&w=600&q=80" alt="Tortilla Española" />
+          <div class="menu-item-content">
+            <h3>Tortilla Española</h3>
+            <p>Clásica tortilla de patata y cebolla, perfecta para cualquier ocasión.</p>
+            <span>8€</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Gazpacho" />
+          <div class="menu-item-content">
+            <h3>Gazpacho Andaluz</h3>
+            <p>Refrescante sopa fría hecha con tomates maduros y verduras.</p>
+            <span>6€</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="ubicacion">
-    <h2>Ubicación</h2>
-    <p>Calle Falsa 123, Ciudad</p>
-  </section>
+    <section id="galeria">
+      <h2>Galería</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1543352634-801f4f5eaa70?auto=format&fit=crop&w=600&q=80" alt="Interior del restaurante" />
+        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80" alt="Mesa preparada" />
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Plato de comida" />
+      </div>
+    </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Teléfono: 555-123-456</p>
-    <p>Email: contacto@labuenamesa.com</p>
-  </section>
+    <section id="ubicacion">
+      <h2>Ubicación</h2>
+      <p>Calle Falsa 123, Ciudad</p>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086482553381!2d-122.41941508468119!3d37.77492927975838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085815411c74c3b%3A0x44eebae4d9c6a6ff!2sCalle%20Falsa%20123!5e0!3m2!1ses!2ses!4v1585762716284!5m2!1ses!2ses"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <div class="contact-info">
+        <p>Teléfono: <a href="tel:+555123456">555-123-456</a></p>
+        <p>Email: <a href="mailto:contacto@labuenamesa.com">contacto@labuenamesa.com</a></p>
+        <p>Síguenos en <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+      </div>
+    </section>
+  </main>
 
   <footer>
     &copy; 2025 Restaurante La Buena Mesa. Todos los derechos reservados.
